@@ -5,8 +5,9 @@ TV Power On/Off by Flickering Lights using Ardiuno
 
 Authors
 =======
-Tyler Walker
-Sarvagya Vaish
+Tyler Walker (tymwalk@gmail.com)
+
+Sarvagya Vaish (sarvagyavaish@gatech.edu)
 
 IR Library
 ==========
