@@ -18,6 +18,8 @@ Hardware
 ========
 * Arduino UNO
 * IR LED Kit - https://www.sparkfun.com/products/10732
+* 10k resistor
+* Photocell
 * Breadboard
 * A few wires
 * Schematic (coming soon)
