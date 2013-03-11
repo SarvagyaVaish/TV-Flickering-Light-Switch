@@ -22,7 +22,7 @@ void setup()
   Serial.begin(9600);
 }
 
-int time=50;
+int time=50; //void loop delay timing
 char commandbuffer[] = "A90";
 int sensorValue = analogRead(A0);
 
