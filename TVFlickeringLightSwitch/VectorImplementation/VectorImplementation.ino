@@ -5,8 +5,12 @@
  * Copyright 2009 Ken Shirriff
  * http://arcfn.com
  *
- * All Vector Implementation is credited to Tyler Walker
- * Copyright 2009 Tyler Walker
+ *|| All Threshold Difference Vector Implementation is credited to Tyler Walker ||
+ *||Copyright 2013 Tyler Walker||
+ *
+ * Code can be used, abused and altered
+ * 
+ * Buy me a beer at Barrelhouse in ATL if you feel generous
  */
 
 #include <IRremote.h>
@@ -19,7 +23,6 @@ void setup()
 }
 
 int time=50;
-int i=0;
 char commandbuffer[] = "A90";
 int sensorValue = analogRead(A0);
 
@@ -46,10 +49,11 @@ void loop() {
   Serial.println("STATEVEC IS COMING");
 
   for (x = 0; x < 28; x = x + 1) {
-    stateVec[x] = DiffVec[x] > 150;
+    stateVec[x] = DiffVec[x] > 150; //create array of true and false values of threshold differences
     Serial.println(stateVec[x]);
 
-    if (stateVec[x] == 1 && triggerA==1 && triggerB==1) { 
+
+    if (stateVec[x] == 1 && triggerA==1 && triggerB==1) { //Begin search for three threshold differences to turn tv on
       Serial.println("PowerON"); 
       sendMessage(getHexVal(commandbuffer));
       break;
@@ -71,6 +75,13 @@ void loop() {
 
 }
 
+/*
+ * 
+ * Sectional credit to Ken Shirriff for IRsend function
+ * Version 0.1 July, 2009
+ * Copyright 2009 Ken Shirriff
+ * http://arcfn.com
+ */
 int getHexVal(char *s) 
 {
   int x = 0;
