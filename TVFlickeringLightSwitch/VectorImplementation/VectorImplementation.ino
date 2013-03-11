@@ -1,9 +1,12 @@
 /*
- * IRremote: IRsendDemo - demonstrates sending IR codes with IRsend
- * An IR LED must be connected to Arduino PWM pin 3.
+ * 
+ * Sectional credit to Ken Shirriff for IRsend function
  * Version 0.1 July, 2009
  * Copyright 2009 Ken Shirriff
  * http://arcfn.com
+ *
+ * All Vector Implementation is credited to Tyler Walker
+ * Copyright 2009 Tyler Walker
  */
 
 #include <IRremote.h>
@@ -15,10 +18,9 @@ void setup()
   Serial.begin(9600);
 }
 
-int time=500;
+int time=50;
 int i=0;
 char commandbuffer[] = "A90";
-int state = 1; // 0 -> DARK
 int sensorValue = analogRead(A0);
 
 void loop() {
@@ -31,13 +33,13 @@ void loop() {
   int triggerB = 0;
 
   for (x = 0; x < 29; x = x + 1) {
-    mySensVals[x] = analogRead(A0);
+    mySensVals[x] = analogRead(A0); //build array of photocell values with 100ms spacing
     Serial.println(mySensVals[x]);
     delay(100);
   }
 
   for (x = 1; x < 29; x = x + 1) {
-    DiffVec[x-1] = abs(mySensVals[x] - mySensVals[x-1]);
+    DiffVec[x-1] = abs(mySensVals[x] - mySensVals[x-1]); //find differences in 100ms spacing
     Serial.println(DiffVec[x-1]); 
   }
 
@@ -64,7 +66,7 @@ void loop() {
 
   }
 
-  delay(50);
+  delay(time);
 
 
 }
